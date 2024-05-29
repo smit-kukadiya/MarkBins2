@@ -219,19 +219,19 @@ def mobile_view(request):
 load_dotenv()
 
 
-firebase_credentials_json = os.environ.get('FIREBASE_CREDENTIALS')
+# firebase_credentials_json = os.environ.get('FIREBASE_CREDENTIALS')
 
 
-firebase_credentials = json.loads(firebase_credentials_json)
+# firebase_credentials = json.loads(firebase_credentials_json)
 
-if not firebase_admin._apps:
-    cred = credentials.Certificate(firebase_credentials)
-    firebase_admin.initialize_app(cred, {
-        'databaseURL': 'https://markbinsdata-default-rtdb.firebaseio.com/'
-    })
+# if not firebase_admin._apps:
+#     cred = credentials.Certificate(firebase_credentials)
+#     firebase_admin.initialize_app(cred, {
+#         'databaseURL': 'https://markbinsdata-default-rtdb.firebaseio.com/'
+#     })
 
-# Get a reference to the Firestore database
-db = firestore.client()
+# # Get a reference to the Firestore database
+# db = firestore.client()
 
 def contact_view(request):
     form = ContactForm()
@@ -249,7 +249,7 @@ def submit_contact_form(request):
                 'message': form.cleaned_data['message'],
             }
             # Save data to Firestore
-            db.collection('contacts').add(data)
+            # db.collection('contacts').add(data)
             success = True
     else:
         form = ContactForm()
