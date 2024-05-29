@@ -19,6 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 load_dotenv()
 import dj_database_url
 
+
 # Initialize Firebase
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -84,18 +85,16 @@ WSGI_APPLICATION = 'pro_marks.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-import dj_database_url
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
 # DATABASES = {
-#     'default': dj_database_url.config(
-#         default=os.environ.get('DATABASE_URL')
-#     )
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+DATABASES = {
+    'default': dj_database_url.parse( os.environ.get('DATABASE_URL')
+    )
+}
 
 # Optional: Set the conn_max_age for persistent connections
 DATABASES['default']['CONN_MAX_AGE'] = 600

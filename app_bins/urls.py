@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path
 from .views import index,upload_image
 from . import views
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', index, name='home'),
@@ -27,3 +27,4 @@ urlpatterns = [
 ]
 
 
+urlpatterns += staticfiles_urlpatterns() 
